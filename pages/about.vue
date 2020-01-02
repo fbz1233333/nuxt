@@ -8,9 +8,8 @@
 
 
             <Menu theme="light"  class="aboutMenu"
-                  :active-name="name"
                   style="text-align: left;display: inline-block"
-                  @on-select="handleSelect">
+              >
               <MenuGroup title="内容">
               <MenuItem name="about-0">
                 <Icon type="ios-paper">
@@ -41,40 +40,12 @@
       <div class="center">
                 <Card class="aboutCard">
                   <div slot="title">
-                    <h1 class="myInfo myH1">工作经历</h1>
+                    <h1 class="myInfo myH1">个人简历</h1>
                   </div>
-                  <p>
-                    sss
-                    sss<br>
-                    sss<br>
-                  </p>
+                  <mavon-editor v-model="text" class="editor"></mavon-editor>
+                  <div class="markdown-body" style="text-align: left;min-height: 200px" v-html="textHtml"/>
                 </Card>
-                <Card class="aboutCard" >
-                  <div slot="title">
-                    <h1 class="myInfo myH1">技术理解</h1>
-                  </div>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                  <p>ss</p>
-                </Card>
-              <Card class="aboutCard">
-                <div slot="title">
-                  <h1 class="myInfo myH1">阶段目标</h1>
-                </div>
 
-              </Card>
-              <Card class="aboutCard">
-                <div slot="title">
-                  <h1 class="myInfo myH1">联系方式</h1>
-                </div>
-              </Card>
       </div>
       <div style="width: 1%;"></div>
 
@@ -94,20 +65,24 @@
     import myHeader from  '~/components/my-header.vue'
     import myFooter from  '~/components/my-footer.vue'
     import myRight from '~/components/my-right.vue'
+    import marked from 'marked'
+    import axios from 'axios'
     export default {
+        async asyncData(){
+          return axios.get('/app/api/v1/getInfo').then(res=>{
+              return {
+                  text:res.data.text
+              }
+          })
+        },
         data(){
             return{
-                name:'about-2'
+
             }
         },
         computed:{
-            number(){
-                return Number.parseInt(this.name.substring(6,7))
-            }
-        },
-        methods:{
-            handleSelect(i1){
-                this.name=i1
+            textHtml(){
+              return marked(this.text)
             }
         },
         components: {
@@ -117,6 +92,9 @@
 </script>
 
 <style scoped>
+  .editor{
+    z-index: 1;
+  }
   .left{
    width: 15%;display: inline-block
   }
@@ -161,8 +139,8 @@
   .aboutCard{
     position: relative;
     text-align: left;
-    width: 48%;
-    min-height: 200px;
+    width: 70%;
+    min-height: 1000px;
     /*width: 50%;*/
     padding: 20px;
     display: inline-block;

@@ -12,9 +12,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "latest",
+    "cookie-universal-nuxt": "^2.1.0",
     "iview": "^3.1.5",
-    "nuxt": "^2.0.0"
+    "js-cookie": "^2.2.1",
+    "marked": "^0.8.0",
+    "mavon-editor": "^2.7.7",
+    "nuxt": "^2.0.0",
+    "qs": "latest",
+    "vuex": "latest"
   },
   "devDependencies": {
     "@nuxtjs/axios": "^5.9.0",

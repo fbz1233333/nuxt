@@ -13,10 +13,7 @@
       <Icon type="ios-albums-outline" />
       Notes
     </MenuItem>
-    <MenuItem to="/diary" name="3">
-      <Icon type="ios-arrow-dropdown-circle" />
-      Diary
-    </MenuItem>
+
     <MenuItem to="/project" name="4">
       <Icon type="ios-apps-outline" />
       Project

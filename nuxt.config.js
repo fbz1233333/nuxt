@@ -23,13 +23,16 @@ export default {
   ** Global CSS
   */
   css: [
-    'iview/dist/styles/iview.css'
+    'iview/dist/styles/iview.css',
+    { src: "mavon-editor/dist/css/index.css" },
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/iview'
+    '@/plugins/iview',
+    '@/plugins/axios',
+    { src: "@/plugins/vue-markdown.js", ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -41,6 +44,7 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
   axios:{
     proxy:true
