@@ -40,10 +40,19 @@
       <div class="center">
                 <Card class="aboutCard">
                   <div slot="title">
-                    <h1 class="myInfo myH1">个人简历</h1>
+                    <h1 class="myInfo myH1">个人简历
+                      <Button @click="updating=!updating" style="font-size: 12px;float: right" icon="ios-brush-outline">
+                        修改
+                      </Button>
+                    </h1>
                   </div>
-                  <mavon-editor v-model="text" class="editor"></mavon-editor>
-                  <div class="markdown-body" style="text-align: left;min-height: 200px" v-html="textHtml"/>
+                  <div v-if="updating">
+                    <mavon-editor v-model="lines" class="editor"></mavon-editor>
+                    <a class="alength" disabled>已经输入{{length}}个字符,至少20个</a>
+                    <Button class="button" type="default" size="large" @click="handleReset">重置</Button>
+                    <Button class="button" type="primary" size="large" @click="handleUpdate">完成</Button>
+                  </div>
+                  <div class="markdown-body" v-if="!updating" style="text-align: left;min-height: 200px" v-html="textHtml"/>
                 </Card>
 
       </div>
@@ -69,7 +78,7 @@
     import axios from 'axios'
     export default {
         async asyncData(){
-          return axios.get('/app/api/v1/getInfo').then(res=>{
+          return axios.get('http://localhost:8081/api/v1/getInfo').then(res=>{
               return {
                   text:res.data.text
               }
@@ -77,12 +86,22 @@
         },
         data(){
             return{
-
+                updating:false,
+                lines:this.text,
+                length:0
             }
         },
         computed:{
             textHtml(){
               return marked(this.text)
+            }
+        },
+        watch:{
+
+        },
+        methods:{
+            handleReset(){
+                this.text=''
             }
         },
         components: {
@@ -94,6 +113,17 @@
 <style scoped>
   .editor{
     z-index: 1;
+    min-height: 500px;
+  }
+  .alength{
+    float: left;
+    margin-top: 10px;
+  }
+  .button{
+    z-index: 1;
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
   }
   .left{
    width: 15%;display: inline-block
