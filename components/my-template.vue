@@ -14,8 +14,14 @@
 
           </slot>
           <hr class="hr">
-          <slot name="content"></slot>
+
         </h1>
+
+        <div style="margin-top: 10px;margin-bottom: 10px">
+          <slot name="content">
+
+          </slot>
+        </div>
 
       </div>
       <my-right></my-right>
@@ -41,8 +47,7 @@
     }
 </script>
 
-<style>
-
+<style scoped>
   .hr{
     border: #2d8cf0 10px solid;border-radius: 10px;
     width: 20%;
@@ -50,10 +55,7 @@
   .diaryList{
     margin-top: -40px;
     text-align: left;
-    padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 20px;
+    padding: 20px 40px 40px 20px;
     background-color: white;
     min-height: 1000px;
     width: 60%;
@@ -61,7 +63,7 @@
   .container {
 
     background-color: #F5F5F5;
-    min-height: 80vh;
+    min-height: 700px;
     display: flex;
     /*justify-content: center;*/
     /*align-items: center;*/
@@ -72,7 +74,8 @@
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: block;
     font-weight: 300;
-    font-size: 100px;
+    margin-top: 20px;
+    font-size: 70px;
     color: #35495e;
     letter-spacing: 1px;
   }

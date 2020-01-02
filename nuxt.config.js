@@ -5,7 +5,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'to be or not to be',
+    title: 'to be or not to be,it is ...',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -40,7 +40,19 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+  axios:{
+    proxy:true
+  },
+  proxy:{
+    '/app':{
+      target:'http://localhost:8081',
+      pathRewrite:{'^/app':''},
+      changeOrigin:true,
+      secure:false
+    }
+  },
   /*
   ** Build configuration
   */
