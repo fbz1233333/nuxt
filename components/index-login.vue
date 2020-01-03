@@ -51,6 +51,8 @@ export default {
     data(){
         return{
             show:false,
+            secure_info:{},
+            state:'',
             loginInfo:{
                 name:'',
                 password:''
@@ -67,14 +69,6 @@ export default {
             },
         }
     },
-    computed:{
-      secure_info(){
-          return this.$store.getters.XXXX_INFO
-      },
-      state(){
-          return this.$store.getters.XXXX_STATE
-      }
-    },
     methods:{
         handleTest(){
             this.$axios.get('/app/api/v0/test')
@@ -88,8 +82,9 @@ export default {
                         if (res.data.loginResult==='LOGIN_SUCCESS'){
 
                             this.$store.commit('XXXX_LOG_IN',res.data)
+                            this.getUserInfo()
                             this.$Notice.success({
-                                title:'LOGIN SUCCESS',
+                                title:'LOG IN SUCCESS',
                                 desc:'Welcome '+res.data.userInfo.name
                         })
                             this.show=false
@@ -103,7 +98,10 @@ export default {
                     })
 
                 }else{
-                    // this.$Message.error('Fail')
+                    this.$Notice.error({
+                        title:'BAD FORMDATA!',
+                        desc:'Please review the formData'
+                    })
                 }
             }))
 
@@ -111,13 +109,27 @@ export default {
         handleLogOut(){
             this.$store.commit('XXXX_LOG_OUT')
             this.$Notice.info({
-                title:'LOG OUT',
+                title:'LOG OUT SUCCESS',
                 desc:'LOGOUT SUCCESS'
             })
+            this.getUserInfo()
+        },
+        getUserInfo(){
+            this.secure_info={
+                STATE:cookie.get('LOGIN_STATE'),
+                USER_ID:cookie.get('LOGIN_USER_ID'),
+                USER_NAME:cookie.get('LOGIN_USER_NAME'),
+                USER_TOKEN:cookie.get('LOGIN_USER_TOKEN'),
+            }
+            this.state=cookie.get('LOGIN_STATE')
         }
     },
+    mounted(){
+        this.getUserInfo()
+    }
 }
-import { mapMutations } from 'vuex'
+import cookie from 'js-cookie'
+// import { mapMutations } from 'vuex'
 </script>
 <style scoped>
   .ivu-form-item >:first-child{

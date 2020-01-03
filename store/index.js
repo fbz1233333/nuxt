@@ -19,14 +19,11 @@ export const getters= {
   XXXX_TOKEN(state){
     return state.LOGIN_USER_TOKEN
   },
-  XXXX_INFO(state){
-    return {
-      STATE:state.LOGIN_STATE,
-      USER_ID:state.LOGIN_USER_ID,
-      USER_NAME:state.LOGIN_USER_NAME,
-      USER_TOKEN:state.LOGIN_USER_TOKEN,
-    }
-  }
+  // XXXX_INFO(state){
+  //   return {
+  //
+  //   }
+  // }
 }
 export const mutations = {
   XXXX_LOG_IN(state,result){

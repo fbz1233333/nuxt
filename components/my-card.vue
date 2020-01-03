@@ -7,7 +7,7 @@
         </h1>
         <!--          <a style="margin-left: 20px;">author</a>-->
         <p class="cardp">
-          {{item.text}}
+          {{item.description}}
         </p>
       </div>
 
