@@ -86,13 +86,19 @@ export default {
                     this.$axios.post('/app/api/v2/login',this.loginInfo).then(res=>{
                         // console.log(res.data)
                         if (res.data.loginResult==='LOGIN_SUCCESS'){
-                            this.$cookies.set('LOGIN_USER_ID',res.data.userInfo.id)
-                            console.log('xxxxx',this.$cookies.get('LOGIN_USER_ID'))
+
+                            this.$store.commit('XXXX_LOG_IN',res.data)
                             this.$Notice.success({
                                 title:'LOGIN SUCCESS',
                                 desc:'Welcome '+res.data.userInfo.name
                         })
                             this.show=false
+                        }else if (res.data.loginResult==='NO_SUCH_USER'){
+                            this.$Notice.warning({
+                                title:"FAILED",
+                                desc:"NO_SUCH_USER"
+                                }
+                            )
                         }
                     })
 
@@ -128,8 +134,6 @@ import { mapMutations } from 'vuex'
 
     /*border-radius: 20px;*/
     text-align: left;
-    padding-top: 100px;
-    min-height: 900px;
    }
   .formTitle {
     font-size: 40px;

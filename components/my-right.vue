@@ -11,6 +11,6 @@ export default {
 <style scoped>
   .CardLeft{
     width: 20%;
-    background-color: #3b8070;
+    background: #dedfda;
   }
 </style>
