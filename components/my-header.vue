@@ -14,10 +14,10 @@
       Notes
     </MenuItem>
 
-    <MenuItem to="/project" name="4">
-      <Icon type="ios-apps-outline" />
-      Project
-    </MenuItem>
+<!--    <MenuItem to="/project" name="4">-->
+<!--      <Icon type="ios-apps-outline" />-->
+<!--      Project-->
+<!--    </MenuItem>-->
       <MenuItem to="/about" name="1">
         <Icon type="ios-analytics" />
         About

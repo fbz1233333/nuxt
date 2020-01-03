@@ -11,7 +11,12 @@
         </div>
         <my-button @click="handleAdd"></my-button>
       </my-card-list>
+      <Modal v-model="show" fullscreen >
+        <p slot="header">Add a note</p>
+        <mavon-editor v-model="info" style="min-height: 800px"></mavon-editor>
+      </Modal>
     </div>
+
   </my-template>
 </template>
 <script>
@@ -25,13 +30,15 @@
         },
         data(){
             return{
-                notes:[]
+                notes:[],
+                show:false,
+                info:''
             }
         },
         methods:{
           handleAdd(){
-              // console.log('clicked')
-
+              console.log('clicked')
+              this.show=true
           }
         },
         mounted(){

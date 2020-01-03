@@ -95,16 +95,12 @@
 
 
           <div v-if="updating">
-            <mavon-editor
-              ref="md"
-              @imgAdd="$imgAdd"
-              @imgDel="$imgDel"
-              v-model="text" class="editor"></mavon-editor>
-            <a class="alength" disabled>已经输入{{length}}个字符,至少20个</a>
+            <my-mavon-editor v-model="text"></my-mavon-editor>
             <Button class="button" icon="md-arrow-dropup-circle" type="default" size="large" @click="handleReset">重置</Button>
             <Button class="button" icon="ios-refresh-circle" type="primary" size="large" @click="handleUpdate">完成</Button>
           </div>
           <my-html :htmlInfo="textHtml" v-if="!updating"></my-html>
+
         </Card>
 
       </div>
@@ -140,60 +136,30 @@
             textHtml(){
                 return marked(this.text)
             },
-            length(){
-                return this.text.length
-            }
+
+        },
+        components: {
+            Logo,myHeader,myFooter,myRight,myHtml,myMavonEditor
         },
         methods:{
-            handleReset(){
-                this.text=''
-            },
             handleUpdate(){
                 this.$axios.post('/app/api/v1/update',{
                     id:this.id,
                     text:this.text
                 }).then(res=>{
-                    this.$Message.success('Update success')
+                    this.$Notice.success({
+                        title:'Update success',
+                        desc:'update success'
+                    })
                     this.updating=false
                 })
             },
-            $imgAdd(pos,$file) {
-                let formData = new FormData();
-                formData.append('file', $file)
-                formData.append('type', 'IMAGE')
-                this.$axios.post('/app/api/v3/upload', formData, {
-                    headers: {
-                        "LOGIN_USER_ID": cookie.get('LOGIN_USER_ID'),
-                        "LOGIN_USER_TOKEN": cookie.get('LOGIN_USER_TOKEN'),
-                    }
-                }).then(res => {
-                    // console.log(res.data)
-                    let base = "/app/image/"
-                    let url = base + res.data.fileName
-                    // console.log(url)
-                    this.$refs.md.$img2Url(pos, url);
-                })
-            },
-            $imgDel(pos){
-                //删除
-                let url=pos[0]
-                let fileName=url.substr(url.lastIndexOf('/')+1)
-                this.$axios.post('/app/api/v3/delete/',{
-                    fileName:fileName,
-                    fileType:'IMAGE'
-                },{
-                    headers:{
-                        "LOGIN_USER_ID":cookie.get('LOGIN_USER_ID'),
-                        "LOGIN_USER_TOKEN":cookie.get('LOGIN_USER_TOKEN'),
-                    }
-                }).then(res=>{
-                    this.$Message.success('delete success')
-                })
-            },
+            handleReset(){
+                this.text=''
+            }
+
         },
-        components: {
-            Logo,myHeader,myFooter,myRight,myHtml
-        },
+
         mounted(){
             this.$axios.get('/app/api/v1/getInfo').then(res=>{
                 this.text=res.data.text
@@ -201,27 +167,21 @@
             })
         }
     }
-    import cookie from 'js-cookie'
+    import myMavonEditor from '~/components/my-mavon-editor.vue'
 </script>
 
 <style scoped>
-  my-html tag{
-    position: relative;
-    top: 200px;
-  }
   .myMenu1{
     text-align: left;min-height: 500px
   }
   .myMenu1 a{
     color: #3c4144;
   }
-  .editor{
-    z-index: 1;
-    min-height: 500px;
+  .left{
+    width: 8%;display: inline-block
   }
-  .alength{
-    float: left;
-    margin-top: 10px;
+  .center{
+    width: 100%;display: inline-block
   }
   .button{
     z-index: 1;
@@ -230,13 +190,6 @@
     margin-bottom: 200px;
     float: right;
   }
-  .left{
-    width: 8%;display: inline-block
-  }
-  .center{
-    width: 100%;display: inline-block
-  }
-
   .container {
     background-color: #F5F5F5;
     min-height: 900px;
