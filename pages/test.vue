@@ -8,7 +8,7 @@
       <div v-for="(item,index) in GitInfos">
         <my-card-a :GitInfo="item"></my-card-a>
       </div>
-      <my-button class="testB" @click="handleClick">
+      <my-button @click="handleClick">
       </my-button>
     </div>
   </my-template>
@@ -58,10 +58,5 @@ import axios from 'axios'
 <style scoped>
   .testA{
     font-size: 15px;
-  }
-  .testB{
-    float: right;
-    margin-right: 10px;
-    margin-top: 20px;
   }
 </style>

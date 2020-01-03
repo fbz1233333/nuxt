@@ -20,8 +20,11 @@ export default {
     border-radius: 100%;
     padding: 50px;
     outline: none;
+    float: right;
+    margin-right: 10px;
+    margin-top: 20px;
   }
   .my-btn:hover{
-    background: #3b8070;
+    background: #5cadff;
   }
 </style>

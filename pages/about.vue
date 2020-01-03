@@ -4,97 +4,113 @@
     <div class="container">
       <div style="width: 1%;"></div>
       <div class="left">
-<!--        <Affix :offset-top="150">-->
-<!--          <Anchor>-->
-<!--            <Menu theme="light"  class="aboutMenu">-->
-<!--              <MenuGroup title="内容">-->
-<!--                <MenuItem name="about-1">-->
-<!--&lt;!&ndash;                  <Icon type="md-card" />&ndash;&gt;-->
-<!--                  <AnchorLink href="#test" title="基本信息">-->
+        <!--        <Affix :offset-top="150">-->
+        <!--          <Anchor>-->
+        <!--            <Menu theme="light"  class="aboutMenu">-->
+        <!--              <MenuGroup title="内容">-->
+        <!--                <MenuItem name="about-1">-->
+        <!--&lt;!&ndash;                  <Icon type="md-card" />&ndash;&gt;-->
+        <!--                  <AnchorLink href="#test" title="基本信息">-->
 
-<!--                  </AnchorLink>-->
-<!--                </MenuItem>-->
-<!--              <MenuItem name="about-0">-->
-<!--                <Icon type="ios-paper">-->
-<!--                </Icon>-->
-<!--                工作经历-->
-<!--              </MenuItem>-->
-<!--              <MenuItem name="about-1">-->
-<!--                <Icon type="ios-ionic" />-->
-<!--                技术理解-->
-<!--              </MenuItem>-->
-<!--              <MenuItem name="about-2">-->
-<!--                <Icon type="ios-star" />-->
-<!--                阶段目标-->
-<!--              </MenuItem>-->
-<!--              <MenuItem name="about-3">-->
-<!--                <Icon type="ios-call" />-->
-<!--                联系方式-->
-<!--              </MenuItem>-->
-<!--          </MenuGroup>-->
+        <!--                  </AnchorLink>-->
+        <!--                </MenuItem>-->
+        <!--              <MenuItem name="about-0">-->
+        <!--                <Icon type="ios-paper">-->
+        <!--                </Icon>-->
+        <!--                工作经历-->
+        <!--              </MenuItem>-->
+        <!--              <MenuItem name="about-1">-->
+        <!--                <Icon type="ios-ionic" />-->
+        <!--                技术理解-->
+        <!--              </MenuItem>-->
+        <!--              <MenuItem name="about-2">-->
+        <!--                <Icon type="ios-star" />-->
+        <!--                阶段目标-->
+        <!--              </MenuItem>-->
+        <!--              <MenuItem name="about-3">-->
+        <!--                <Icon type="ios-call" />-->
+        <!--                联系方式-->
+        <!--              </MenuItem>-->
+        <!--          </MenuGroup>-->
 
-<!--          </Menu>-->
-<!--          </Anchor>-->
-<!--        </Affix>-->
+        <!--          </Menu>-->
+        <!--          </Anchor>-->
+        <!--        </Affix>-->
         <Affix :offset-top="220">
 
-            <Anchor style="background:#f5f5f5;text-align: left">
-              <Menu>
-                <MenuGroup title="索引">
-                  <MenuItem>
-                    <AnchorLink href="#basicInfo" title="基本信息"></AnchorLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <AnchorLink href="#experience" title="工作经历"></AnchorLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <AnchorLink href="#projects" title="项目经验"></AnchorLink>
-
-                  </MenuItem>
-                  <MenuItem>
-                    <AnchorLink href="#technology" title="技术理解"></AnchorLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <AnchorLink href="#goals" title="阶段目标"></AnchorLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <AnchorLink href="#contract" title="联系方式"></AnchorLink>
-                  </MenuItem>
-                </MenuGroup>
-              </Menu>
-            </Anchor>
+          <Menu class="myMenu1">
+            <MenuGroup title="索引" >
+              <a href="#basicInfo">
+                <MenuItem name="basicInfo">
+                  <Icon type="md-add"/>
+                  基本信息
+                </MenuItem>
+              </a>
+              <a href="#experience">
+                <MenuItem name="experience">
+                  <Icon type="md-apps" />
+                  工作经历
+                </MenuItem></a>
+              <a href="#projects">
+                <MenuItem name="projects">
+                  <Icon type="md-albums" />
+                  项目经验
+                </MenuItem></a>
+              <a href="#technology">
+                <MenuItem name="technology">
+                  <Icon type="md-analytics" />
+                  技术理解
+                </MenuItem></a>
+              <a href="#goals">
+                <MenuItem name="goals">
+                  <Icon type="md-star" />
+                  阶段目标
+                </MenuItem>
+              </a>
+              <a href="#contract">
+                <MenuItem name="contract">
+                  <Icon type="ios-call" />
+                  联系方式
+                </MenuItem>
+              </a>
+            </MenuGroup>
+          </Menu>
 
         </Affix>
       </div>
       <div style="width: 1%;"></div>
 
       <div class="center">
-                <Card class="aboutCard">
-                  <div slot="title">
-                    <h1 class="myInfo myH1">个人简历
-                      <Button @click="updating=!updating" style="font-size: 12px;float: right;margin-right: 50px" icon="ios-brush-outline">
-                        修改
-                      </Button>
-                    </h1>
-                  </div>
-                  <div v-if="updating">
-                    <mavon-editor
-                      ref="md"
-                      @imgAdd="$imgAdd"
-                      @imgDel="$imgDel"
-                      v-model="text" class="editor"></mavon-editor>
-                    <a class="alength" disabled>已经输入{{length}}个字符,至少20个</a>
-                    <Button class="button" icon="md-arrow-dropup-circle" type="default" size="large" @click="handleReset">重置</Button>
-                    <Button class="button" icon="ios-refresh-circle" type="primary" size="large" @click="handleUpdate">完成</Button>
-                  </div>
-                  <div class="markdown-body html1" v-if="!updating"
-                        v-html="textHtml"/>
-                </Card>
+        <Card class="aboutCard">
+
+
+          <div slot="title">
+            <a style="color: #2d8cf0">简历 扈江离与辟芷兮，纫秋兰以为佩</a>
+            <Button @click="updating=!updating" class="myButton" icon="ios-brush-outline">
+              修改
+            </Button>
+          </div>
+
+
+
+
+          <div v-if="updating">
+            <mavon-editor
+              ref="md"
+              @imgAdd="$imgAdd"
+              @imgDel="$imgDel"
+              v-model="text" class="editor"></mavon-editor>
+            <a class="alength" disabled>已经输入{{length}}个字符,至少20个</a>
+            <Button class="button" icon="md-arrow-dropup-circle" type="default" size="large" @click="handleReset">重置</Button>
+            <Button class="button" icon="ios-refresh-circle" type="primary" size="large" @click="handleUpdate">完成</Button>
+          </div>
+          <my-html :htmlInfo="textHtml" v-if="!updating"></my-html>
+        </Card>
 
       </div>
       <div style="width: 1%;"></div>
 
-        <my-right></my-right>
+      <my-right></my-right>
     </div>
 
 
@@ -106,13 +122,12 @@
 </template>
 
 <script>
-    import 'github-markdown-css/github-markdown.css'
     import Logo from '~/components/Logo.vue'
     import myHeader from  '~/components/my-header.vue'
     import myFooter from  '~/components/my-footer.vue'
     import myRight from '~/components/my-right.vue'
+    import myHtml from '~/components/my-html.vue'
     import marked from 'marked'
-    import axios from 'axios'
     export default {
         data(){
             return{
@@ -123,7 +138,7 @@
         },
         computed:{
             textHtml(){
-              return marked(this.text)
+                return marked(this.text)
             },
             length(){
                 return this.text.length
@@ -134,7 +149,7 @@
                 this.text=''
             },
             handleUpdate(){
-                axios.post('/app/api/v1/update',{
+                this.$axios.post('/app/api/v1/update',{
                     id:this.id,
                     text:this.text
                 }).then(res=>{
@@ -146,7 +161,7 @@
                 let formData = new FormData();
                 formData.append('file', $file)
                 formData.append('type', 'IMAGE')
-                axios.post('/app/api/v3/upload', formData, {
+                this.$axios.post('/app/api/v3/upload', formData, {
                     headers: {
                         "LOGIN_USER_ID": cookie.get('LOGIN_USER_ID'),
                         "LOGIN_USER_TOKEN": cookie.get('LOGIN_USER_TOKEN'),
@@ -163,7 +178,7 @@
                 //删除
                 let url=pos[0]
                 let fileName=url.substr(url.lastIndexOf('/')+1)
-                axios.post('/app/api/v3/delete/',{
+                this.$axios.post('/app/api/v3/delete/',{
                     fileName:fileName,
                     fileType:'IMAGE'
                 },{
@@ -177,10 +192,10 @@
             },
         },
         components: {
-            Logo,myHeader,myFooter,myRight
+            Logo,myHeader,myFooter,myRight,myHtml
         },
         mounted(){
-            axios.get('/app/api/v1/getInfo').then(res=>{
+            this.$axios.get('/app/api/v1/getInfo').then(res=>{
                 this.text=res.data.text
                 this.id=res.data.id
             })
@@ -190,15 +205,19 @@
 </script>
 
 <style scoped>
+  my-html tag{
+    position: relative;
+    top: 200px;
+  }
+  .myMenu1{
+    text-align: left;min-height: 500px
+  }
+  .myMenu1 a{
+    color: #3c4144;
+  }
   .editor{
     z-index: 1;
     min-height: 500px;
-  }
-  .html1{
-    text-align: left;
-    /*min-height: 200px;*/
-    /*line-height: 220%;*/
-    margin-bottom: 220px;
   }
   .alength{
     float: left;
@@ -212,10 +231,10 @@
     float: right;
   }
   .left{
-   width: 15%;display: inline-block
+    width: 8%;display: inline-block
   }
   .center{
-   width: 62%;display: inline-block
+    width: 100%;display: inline-block
   }
 
   .container {
@@ -237,14 +256,22 @@
   }
   .myInfo {
 
-    word-spacing: 5px;
-    padding-bottom: 15px;
+    /*word-spacing: 5px;*/
+  }
+  .myButton{
+    font-size: 12px;
+    float: right;
+
+    position: relative;
+    top: -10px;
+    right: -20px;
   }
   .myH1{
-    font-weight: 700;
-    font-size: 25px;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 250%;
     color: #526488;
-    height: 200%;
+    /*background-color: #dedfda;*/
   }
   .aboutMenu{
     min-height: 500px;

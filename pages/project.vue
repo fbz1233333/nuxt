@@ -6,12 +6,7 @@
     </div>
     <div slot="content">
       <my-card-list>
-        <my-card></my-card>
-        <my-card></my-card>
-        <my-card></my-card>
-        <my-card></my-card>
-        <my-card></my-card>
-        <my-card></my-card>
+
       </my-card-list>
     </div>
   </my-template>

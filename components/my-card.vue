@@ -1,26 +1,40 @@
 <template>
 
     <Card class="card">
-      <h1 class="cardt">TITLE</h1>
-      <!--          <a style="margin-left: 20px;">author</a>-->
-      <p class="cardp">
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-        this is content...
-      </p>
-      <h3 style="text-align: right;">Dec 31,2019 22:44:12 </h3>
+      <div @click="handleClick">
+        <h1 class="cardt">
+          {{item.title}}
+        </h1>
+        <!--          <a style="margin-left: 20px;">author</a>-->
+        <p class="cardp">
+          {{item.text}}
+        </p>
+      </div>
+
+      <h3 class="cardD">
+        {{item.createTime}}
+      </h3>
     </Card>
 </template>
 <script>
 export default {
-
+    methods:{
+        handleClick(){
+            // console.log('ccc')
+            this.$router.push({
+                path:this.href
+            })
+        }
+    },
+    props:{
+        item:{
+            type:Object,
+            required:true
+        },
+        href:{
+            type:String,
+        }
+    }
 }
 </script>
 <style scoped>
@@ -35,5 +49,8 @@ export default {
   .cardp{
     font-size: 15px;
     font-weight: 100;
+  }
+  .cardD{
+    text-align: right;font-weight: 100;font-size: 15px
   }
 </style>
