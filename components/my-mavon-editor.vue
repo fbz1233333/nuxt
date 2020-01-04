@@ -3,6 +3,7 @@
   <div>
     <mavon-editor
       ref="md"
+      :style="'min-height:'+minHeight+'px' "
       @imgAdd="$imgAdd"
       @imgDel="$imgDel"
       @change="handleChange"
@@ -12,11 +13,15 @@
   </div>
 </template>
 <script>
+  import cookie from 'js-cookie'
 export default {
     props:{
         value:{
             type:String,
             required:true
+        },
+        minHeight:{
+            type: Number
         }
     },
 

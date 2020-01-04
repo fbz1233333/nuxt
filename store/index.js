@@ -4,9 +4,17 @@ export const state = () => ({
   LOGIN_STATE:cookie.get('LOGIN_STATE') ||"OUT",
   LOGIN_USER_ID:cookie.get("LOGIN_USER_ID") || "",
   LOGIN_USER_NAME:cookie.get("LOGIN_USER_NAME") || "",
-  LOGIN_USER_TOKEN:cookie.get("LOGIN_USER_TOKEN") || ""
+  LOGIN_USER_TOKEN:cookie.get("LOGIN_USER_TOKEN") || "",
+
+  LoginDrawer:false
+
 })
 export const getters= {
+  getLoginDrawer(state){
+    return state.LoginDrawer
+  },
+
+
   XXXX_STATE(state){
     return state.LOGIN_STATE
   },
@@ -19,13 +27,20 @@ export const getters= {
   XXXX_TOKEN(state){
     return state.LOGIN_USER_TOKEN
   },
-  // XXXX_INFO(state){
-  //   return {
-  //
-  //   }
-  // }
+  XXXX_INFO(state){
+    return {
+      'LOGIN_USER_ID':state.LOGIN_USER_ID,
+      'LOGIN_USER_NAME':state.LOGIN_USER_NAME,
+      'LOGIN_USER_TOKEN':state.LOGIN_USER_TOKEN,
+    }
+  }
 }
 export const mutations = {
+  setLoginDrawer(state,data){
+    state.LoginDrawer=data
+  },
+
+
   XXXX_LOG_IN(state,result){
     console.log('user XXXX_Store..')
     state.LOGIN_STATE='ON'
@@ -49,7 +64,7 @@ export const mutations = {
     state.LOGIN_USER_ID=""
     state.LOGIN_USER_NAME="";
     state.LOGIN_USER_TOKEN="";
-    cookie.set('LOGIN_STATE','OUT',{expires:1})
+    cookie.set('LOGIN_STATE','')
     cookie.remove('LOGIN_USER_ID')
     cookie.remove('LOGIN_USER_NAME')
     cookie.remove('LOGIN_USER_TOKEN')

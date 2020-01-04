@@ -33,6 +33,7 @@ export default {
     '@/plugins/iview',
     '@/plugins/axios',
     { src: "@/plugins/vue-markdown.js", ssr: false },
+    { src: "@/plugins/vue-particles",ssr:false},
   ],
   /*
   ** Nuxt.js dev-modules

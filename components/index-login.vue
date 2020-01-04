@@ -1,140 +1,56 @@
 <template>
   <div>
-          {{secure_info}}
-    <Button @click="handleTest">Test</Button>
+<!--    {{secure_info}}-->
+<!--    <Button @click="handleTest">Test</Button>-->
     <Button v-if="state==='ON'" type="warning" class="OpenButton" @click="handleLogOut" size="large">LogOut</Button>
-    <Button v-else @click="show=!show" type="primary" class="OpenButton" size="large">OPEN</Button>
-    <Drawer class="testCard"
-            v-model="show"
-            width="510"
-            :closable="false">
-
-      <h1 class="formTitle">Log In</h1>
-      <hr style="width: 20%;margin-bottom: 15px;border: #2d8cf0 5px solid;border-radius: 10px">
-      <Form :model="loginInfo" ref="loginForm" :rules="loginRules">
-        <FormItem label="Name" prop="name">
-          <Input  v-model="loginInfo.name" size="large" placeholder="name">
-          <Icon type="ios-person-outline" slot="prepend"/>
-          </Input>
-        </FormItem>
-        <FormItem label="Password" prop="password">
-          <Input type="password" v-model="loginInfo.password"  placeholder="password">
-          <Icon type="ios-lock-outline" size="large"   slot="prepend"></Icon>
-          </Input>
-        </FormItem>
-        <FormItem>
-          <a>forget password?</a>
-        </FormItem>
-        <FormItem style="text-align: right;margin-top: 50px">
-          <Button size="large" type="primary" @click="handleSubmit('loginForm')">
-            LogIn
-          </Button>
-          <Button size="large" @click="loginInfo={}">
-            Reset
-          </Button><br>
-          <br>
-        </FormItem>
-        <FormItem style="text-align: center">
-          <a style="font-size: 12px">log in by</a>
-          <Button icon="md-add-circle" type="warning" shape="circle"></Button>
-          <Button icon="ios-alarm" type="info" shape="circle"></Button>
-          <Button icon="ios-alarm" type="error" shape="circle"></Button>
-        </FormItem>
-      </Form>
-    </Drawer>
-
+    <Button v-else @click="handleOpen" type="primary" class="OpenButton" size="large">OPEN</Button>
+    <my-login-form v-model="show"></my-login-form>
   </div>
 
 </template>
 <script>
-export default {
-    data(){
-        return{
-            show:false,
-            secure_info:{},
-            state:'',
-            loginInfo:{
-                name:'',
-                password:''
+    export default {
+        data(){
+            return {
+                show: false,
+                secure_info: this.$store.getters.XXXX_INFO,
+                state:this.$store.getters.XXXX_STATE
+            }
+        },
+        computed:{
+
+        },
+        methods:{
+            handleTest(){
+                this.$axios.get('/app/api/v0/test')
             },
-            loginRules:{
-                name:[
-                    {required:true,message:'name is needed',trigger:'blur'},
-                    {type:'string',min:3,max:5,message: 'name length 3-5',trigger:'blur'}
-                ],
-                password: [
-                    {required:true,message:'password is needed',trigger:'blur'},
-                    {type:'string',min:6,max:8,message: 'password length 6-8',trigger:'blur'}
-                ]
+            handleOpen(){
+                this.$store.commit('setLoginDrawer',true)
             },
-        }
-    },
-    methods:{
-        handleTest(){
-            this.$axios.get('/app/api/v0/test')
+            handleLogOut(){
+                this.$store.commit('XXXX_LOG_OUT')
+                this.$Notice.info({
+                    title:'LOG OUT SUCCESS',
+                    desc:'LOGOUT SUCCESS'
+                })
+            }
         },
-        handleSubmit(name){
-            this.$refs[name].validate((valid => {
-                if (valid){
-                    // this.$Message.success('success')
-                    this.$axios.post('/app/api/v2/login',this.loginInfo).then(res=>{
-                        // console.log(res.data)
-                        if (res.data.loginResult==='LOGIN_SUCCESS'){
-
-                            this.$store.commit('XXXX_LOG_IN',res.data)
-                            this.getUserInfo()
-                            this.$Notice.success({
-                                title:'LOG IN SUCCESS',
-                                desc:'Welcome '+res.data.userInfo.name
-                        })
-                            this.show=false
-                        }else if (res.data.loginResult==='NO_SUCH_USER'){
-                            this.$Notice.warning({
-                                title:"FAILED",
-                                desc:"NO_SUCH_USER"
-                                }
-                            )
-                        }
-                    })
-
-                }else{
-                    this.$Notice.error({
-                        title:'BAD FORMDATA!',
-                        desc:'Please review the formData'
-                    })
-                }
-            }))
-
+        components:{
+            myLoginForm
         },
-        handleLogOut(){
-            this.$store.commit('XXXX_LOG_OUT')
-            this.$Notice.info({
-                title:'LOG OUT SUCCESS',
-                desc:'LOGOUT SUCCESS'
-            })
-            this.getUserInfo()
-        },
-        getUserInfo(){
+        mounted(){
             this.secure_info={
-                STATE:cookie.get('LOGIN_STATE'),
-                USER_ID:cookie.get('LOGIN_USER_ID'),
-                USER_NAME:cookie.get('LOGIN_USER_NAME'),
-                USER_TOKEN:cookie.get('LOGIN_USER_TOKEN'),
+                'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
+                'LOGIN_USER_NAME':cookie.get('LOGIN_USER_NAME'),
             }
             this.state=cookie.get('LOGIN_STATE')
         }
-    },
-    mounted(){
-        this.getUserInfo()
     }
-}
-import cookie from 'js-cookie'
-// import { mapMutations } from 'vuex'
+    import cookie from 'js-cookie'
+    import myLoginForm from  '~/components/my-login-form.vue'
 </script>
 <style scoped>
-  .ivu-form-item >:first-child{
-    font-size: 18px;
-  }
+
 
   .OpenButton{
     position: absolute;
@@ -142,16 +58,5 @@ import cookie from 'js-cookie'
     bottom: 450px;
   }
 
-  .testCard{
 
-    /*border-radius: 20px;*/
-    text-align: left;
-   }
-  .formTitle {
-    font-size: 40px;
-    font-weight: 300;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
 </style>

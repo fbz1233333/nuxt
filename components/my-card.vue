@@ -1,7 +1,7 @@
 <template>
 
-    <Card class="card">
-      <div @click="handleClick">
+    <Card class="card" @click.native="handleClick" >
+
         <h1 class="cardt">
           {{item.title}}
         </h1>
@@ -9,7 +9,6 @@
         <p class="cardp">
           {{item.description}}
         </p>
-      </div>
 
       <h3 class="cardD">
         {{item.createTime}}
@@ -38,6 +37,9 @@ export default {
 }
 </script>
 <style scoped>
+  .card:hover{
+    color: #2d8cf0;
+  }
   .card{
     margin-top: 20px;
     min-height: 20px;

@@ -10,6 +10,7 @@ export default {
 </script>
 <style scoped>
   .Cardlist{
-    padding-bottom: 80px;
+    margin-bottom: 200px;
+
   }
 </style>

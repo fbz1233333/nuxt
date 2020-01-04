@@ -91,9 +91,6 @@
             </Button>
           </div>
 
-
-
-
           <div v-if="updating">
             <my-mavon-editor v-model="text"></my-mavon-editor>
             <Button class="button" icon="md-arrow-dropup-circle" type="default" size="large" @click="handleReset">重置</Button>
@@ -108,8 +105,6 @@
 
       <my-right></my-right>
     </div>
-
-
     <my-footer>
 
     </my-footer>
@@ -146,6 +141,11 @@
                 this.$axios.post('/app/api/v1/update',{
                     id:this.id,
                     text:this.text
+                },{
+                    headers:{
+                        'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
+                        'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN')
+                    }
                 }).then(res=>{
                     this.$Notice.success({
                         title:'Update success',
@@ -167,6 +167,7 @@
             })
         }
     }
+    import cookie from 'js-cookie'
     import myMavonEditor from '~/components/my-mavon-editor.vue'
 </script>
 
