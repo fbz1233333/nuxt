@@ -3,11 +3,14 @@
   <div>
     <mavon-editor
       ref="md"
-      :style="'min-height:'+minHeight+'px' "
+      :style="{ minHeight: minHeight + 'px' }"
       @imgAdd="$imgAdd"
       @imgDel="$imgDel"
       @change="handleChange"
-      v-model="value" class="editor"></mavon-editor>
+      v-model="value"
+      class="editor">
+
+    </mavon-editor>
     <a class="length" disabled>已经输入{{length}}个字符,至少20个</a>
 
   </div>
@@ -21,7 +24,8 @@ export default {
             required:true
         },
         minHeight:{
-            type: Number
+            type: Number,
+            default: 400
         }
     },
 

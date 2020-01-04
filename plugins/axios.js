@@ -1,6 +1,7 @@
 export default function ({ $axios, app }) {
   // $axios.baseUrl="http://localhost:8081"
   // console.log(app.$cookies.get('token'))  //每次请求获取cooie
+  // app.use(proxy('/app'),{target:'http://localhost:8081',changeOrigin:true})
   $axios.onRequest(config => {
     // config.headers.cookie=app.$cookies
     // 获取cookie放在头部传到后端

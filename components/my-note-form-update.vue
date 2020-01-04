@@ -1,9 +1,7 @@
 <template>
   <div>
     <Modal v-model="value" fullscreen>
-      <my-mavon-editor v-model="noteNew.text" :min-height="800">
-
-      </my-mavon-editor>
+      <my-mavon-editor v-model="noteNew.text" :min-height="800"></my-mavon-editor>
       <div slot="footer">
         <Button type="primary" @click="handleOk">Submit</Button>
         <Button @click="handleCancel">Cancel</Button>
@@ -15,10 +13,12 @@
       </div>
       <Form ref="form1" :model="noteNew" :rules="rules1" :label-width="100">
         <FormItem prop="title" label="title">
-          <Input type="text" v-model="noteNew.title" style="width: 200px" size="large"/>
+          <Input type="text" v-model="noteNew.title" style="width: 200px" size="large">
+          </Input>
         </FormItem>
         <FormItem prop="description" label="description">
-          <Input  v-model="noteNew.description" type="textarea" :rows="5"/>
+          <Input  v-model="noteNew.description" type="textarea" :rows="5">
+          </Input>
 
         </FormItem>
       </Form>
@@ -46,16 +46,27 @@
                 required:true,
                 type:String
             },
-
+            note:{
+                required:true,
+                type:Object
+            },
         },
+
+        computed:{
+          noteNew(){
+              return this.note
+          }
+        },
+
         data(){
             return{
                 show2:false,
-                noteNew:{
-                    title:'',
-                    text:'',
-                    description:''
-                },
+                // noteNew:{
+                //     id:'',
+                //     title:'',
+                //     text:'',
+                //     description:''
+                // },
                 rules1:{
                     title:[
                         {required:true,message:'title is needed',trigger:'blur'},
@@ -70,6 +81,7 @@
         },
         methods:{
             handleOk(){
+                // console.log()
                 if (this.noteNew.text.length<11){
                     this.$Message.warning('at least 11 chars')
                 }else {
@@ -89,7 +101,7 @@
                             // this.$Message.loading('Uploading.....')
                             this.$Notice.success({
                                 title: 'Success',
-                                desc: 'Add successfully'
+                                desc: 'update successfully'
                             })
                             this.show2=false
                             // this.show=false

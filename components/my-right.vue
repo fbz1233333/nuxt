@@ -1,6 +1,6 @@
 <template>
   <div class="CardLeft">
-    <img src="../assets/testImage1.png"  width="100%"/>
+    <img src="../assets/img/testImage1.png" width="100%"/>
   </div>
 </template>
 <script>

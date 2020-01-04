@@ -1,7 +1,7 @@
 <template>
 
   <button class="my-btn" @click="handleClick">
-    <Icon type="md-add" style="color: white"></Icon>
+    <Icon type="md-add" style="color: white" size="50"></Icon>
   </button>
 </template>
 <script>
@@ -18,7 +18,7 @@ export default {
     background: #2d8cf0;
     border: #2d8cf0 0 solid;
     border-radius: 100%;
-    padding: 50px;
+    padding: 30px;
     outline: none;
     float: right;
     margin-right: 10px;

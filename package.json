@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "latest",
     "cookie-universal-nuxt": "^2.1.0",
+    "fs": "0.0.1-security",
     "iview": "^3.1.5",
     "js-cookie": "^2.2.1",
     "marked": "^0.8.0",

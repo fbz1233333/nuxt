@@ -45,17 +45,17 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    'cookie-universal-nuxt',
   ],
   axios:{
-    proxy:true
+    proxy:true,
   },
   proxy:{
     '/app':{
       target:'http://localhost:8081',
-      pathRewrite:{'^/app':''},
       changeOrigin:true,
-      secure:false
+      pathRewrite:{
+        '^/app':'/'
+      },
     }
   },
   /*

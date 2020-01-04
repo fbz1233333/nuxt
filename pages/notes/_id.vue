@@ -6,15 +6,17 @@
         <Icon type="md-close" />
         Delete
       </Button>
-      <Button type="info">
-        <Icon type="ios-brush-outline" @click="handleUpdate"/>
+      <Button type="info" @click="handleUpdate">
+        <Icon type="ios-brush-outline" />
         Update
       </Button>
+
     </div>
     <div slot="content">
       <!--      {{note.id}}-->
-
       <my-html :htmlInfo="note.text"></my-html>
+      <my-note-form-update v-model="show" post-url='/app/api/v4/update' :note="note"></my-note-form-update>
+
     </div>
   </my-template>
 </template>
@@ -22,11 +24,30 @@
     import cookie from 'js-cookie'
     import myTemplate from '~/components/my-template.vue'
     import myHtml from '~/components/my-html.vue'
+    import myNoteFormUpdate from '~/components/my-note-form-update.vue'
     export default {
+        data(){
+            return{
+                show:false,
+                note:{
+                    id:'',
+                    title:'',
+                    description:'',
+                    text:''
+                }
+            }
+        },
+        mounted(){
+            this.$axios.post('/app/api/v4/getOneNote',{
+                id:this.$route.params.id
+            }).then(res=>{
+                this.note=res.data
+            })
+        },
 
         methods:{
             handleUpdate(){
-                console.log('update')
+                this.show=true
             },
             handleDelete(){
                 let _this=this
@@ -60,23 +81,20 @@
             }
         },
         components:{
-            myTemplate,myHtml
+            myTemplate,myHtml,myNoteFormUpdate
         },
-        data(){
-            return{
-                note:{
-                    text:''
-                }
-            }
-        },
-        mounted(){
-            this.$axios.post('/app/api/v4/getOneNote', {
-                    id: this.$route.params.id
-                }).then(res=>{
-                this.note=res.data
-            })
-        }
+        // asyncData({params}){
+        //     console.log('in net',params.id)
+        //     return myaxios.post('http://localhost:8081/api/v4/getOneNote',{
+        //         id:params.id
+        //     }).then(res=>{
+        //         return{note:res.data}
+        //     })
+        // }
     }
+    // import axios from 'axios'
+    // const myaxios = axios.create({
+    // })
 </script>
 <style scoped>
   .div1{

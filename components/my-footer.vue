@@ -16,14 +16,13 @@
 </script>
 <style scoped>
   .footer{
-    display: flex;
+
     /*align-items: center;*/
   }
   .info{
     color: white;
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    display: block;
     font-weight: 300;
     font-size: 10px;
     text-align: center;

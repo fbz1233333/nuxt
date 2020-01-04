@@ -104,7 +104,7 @@
 
 <style scoped>
   .container {
-    background-image: url("../assets/index-png1.png");
+    background-image: url("../assets/img/index-png1.png");
     background-color: #F5F5F5;
     min-height: 900px;
     display: flex;
