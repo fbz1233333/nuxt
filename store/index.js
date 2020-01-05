@@ -16,7 +16,7 @@ export const getters= {
 
 
   XXXX_STATE(state){
-    return state.LOGIN_STATE
+    return cookie.get('LOGIN_STATE')
   },
   XXXX_ID(state){
     return state.LOGIN_USER_ID
@@ -29,9 +29,9 @@ export const getters= {
   },
   XXXX_INFO(state){
     return {
-      'LOGIN_USER_ID':state.LOGIN_USER_ID,
-      'LOGIN_USER_NAME':state.LOGIN_USER_NAME,
-      'LOGIN_USER_TOKEN':state.LOGIN_USER_TOKEN,
+      'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
+      'LOGIN_USER_NAME':cookie.get('LOGIN_USER_NAME'),
+      'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN'),
     }
   }
 }

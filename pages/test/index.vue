@@ -10,6 +10,18 @@
       </div>
       <my-button @click="handleClick">
       </my-button>
+
+<!--        {{cookieRes}}-->
+      <Menu mode="horizontal">
+        <MenuItem name="1" to="/test/1" >
+            first
+        </MenuItem>
+        <MenuItem name="2" to="/test/2">
+            second
+        </MenuItem>
+
+      </Menu>
+      <nuxt/>
     </div>
   </my-template>
 </template>
@@ -20,12 +32,8 @@
 export default {
       data(){
           return{
+              cookieRes:this.$cookies.get('LOGIN_USER_ID'),
               GitInfos:[
-                  {
-                      href:'https://github.com/fbz1233333/swagger',
-                      info:'Use the swagger to write thi API documents',
-                      time:'2015-12-11 12:45'
-                  },
                   {
                       href:'https://github.com/fbz1233333/swagger',
                       info:'Use the swagger to write thi API documents',

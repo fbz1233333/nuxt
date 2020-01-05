@@ -93,8 +93,8 @@
                         this.$axios.post(this.postUrl,this.noteNew,
                             {
                                 headers:{
-                                    'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
-                                    'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN')
+                                    'LOGIN_USER_ID':this.$cookies.get('LOGIN_USER_ID'),
+                                    'LOGIN_USER_TOKEN':this.$cookies.get('LOGIN_USER_TOKEN')
                                 }
                             }).then(res=> {
                             // this.$Message.loading('Uploading.....')

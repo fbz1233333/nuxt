@@ -3,7 +3,7 @@
   <Affix class="header">
 
   <Menu mode="horizontal"
-        style="padding-left: 300px" theme="primary" active-name="1">
+        style="padding-left: 400px" theme="primary" active-name="1">
     <MenuItem to="/" name="0">
       <Icon type="ios-analytics" />
       Home

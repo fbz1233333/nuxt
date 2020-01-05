@@ -46,7 +46,6 @@
         }
 
     }
-    import cookie from 'js-cookie'
 </script>
 <style scoped>
 

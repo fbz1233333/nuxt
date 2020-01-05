@@ -143,8 +143,8 @@
                     text:this.text
                 },{
                     headers:{
-                        'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
-                        'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN')
+                        'LOGIN_USER_ID':this.$cookies.get('LOGIN_USER_ID'),
+                        'LOGIN_USER_TOKEN':this.$cookies.cookie.get('LOGIN_USER_TOKEN')
                     }
                 }).then(res=>{
                     this.$Notice.success({
