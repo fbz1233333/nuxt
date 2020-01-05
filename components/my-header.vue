@@ -9,7 +9,7 @@
       Home
     </MenuItem>
 
-    <MenuItem to="/notes" name="2">
+    <MenuItem  name="2" to="/notes">
       <Icon type="ios-albums-outline" />
       Notes
     </MenuItem>
@@ -43,6 +43,10 @@
     <MenuItem class="right" name="login" v-else>
 <!--      <Button @click="handle1">Login</Button>-->
     </MenuItem>
+<div class="myAvatar">
+  <Avatar icon="ios-person"  size="large" src="/app/image/test.jpg"/>
+  <a class="myA">fbz123</a>
+</div>
   </Menu>
   </Affix>
 </template>
@@ -62,6 +66,17 @@
 }
 </script>
 <style scoped>
+  .myA{
+    color: white;
+  }
+  .myAvatar{
+
+    display: inline-block;
+    position: relative;
+    float: right;
+    right: 300px;
+    /*margin-right: 200px;*/
+  }
   .header{
 
   }

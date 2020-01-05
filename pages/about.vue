@@ -85,7 +85,9 @@
 
 
           <div slot="title">
-            <a style="color: #2d8cf0">简历 扈江离与辟芷兮，纫秋兰以为佩</a>
+            <a style="color: #2d8cf0">扈江离与辟芷兮，纫秋兰以为佩</a>
+<!--            <img src="../assets/img/top-right.jpg" height="40" width="180"-->
+<!--                 style="position: relative;float:right;right: 20px"/>-->
             <Button @click="updating=!updating" class="myButton" icon="ios-brush-outline">
               修改
             </Button>
@@ -144,7 +146,7 @@
                 },{
                     headers:{
                         'LOGIN_USER_ID':this.$cookies.get('LOGIN_USER_ID'),
-                        'LOGIN_USER_TOKEN':this.$cookies.cookie.get('LOGIN_USER_TOKEN')
+                        'LOGIN_USER_TOKEN':this.$cookies.get('LOGIN_USER_TOKEN')
                     }
                 }).then(res=>{
                     this.$Notice.success({
@@ -218,7 +220,7 @@
 
     position: relative;
     top: -10px;
-    right: -20px;
+    right: 10px;
   }
   .myH1{
     font-weight: 400;

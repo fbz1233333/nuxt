@@ -2,14 +2,17 @@
   <my-template>
     <div slot="title">
       {{note.title}}
-      <Button type="error" @click="handleDelete">
-        <Icon type="md-close" />
-        Delete
-      </Button>
-      <Button type="info" @click="handleUpdate">
-        <Icon type="ios-brush-outline" />
-        Update
-      </Button>
+      <div style="float:right;;">
+        <Button type="error" @click="handleDelete">
+          <Icon type="md-close" />
+          Delete
+        </Button>
+        <Button type="info" @click="handleUpdate">
+          <Icon type="ios-brush-outline" />
+          Update
+        </Button>
+      </div>
+
 
     </div>
     <div slot="content">
@@ -37,14 +40,20 @@
                 }
             }
         },
-        mounted(){
-            this.$axios.post('/app/api/v4/getOneNote',{
-                id:this.$route.params.id
-            }).then(res=>{
-                this.note=res.data
+        // mounted(){
+        //     this.$axios.post('/app/api/v4/getOneNote',{
+        //         id:this.$route.params.id
+        //     }).then(res=>{
+        //         this.note=res.data
+        //     })
+        // },
+        asyncData({params}){
+            return myaxios.post('http://localhost:8081/api/v4/getOneNote',{ id:params.id}).then(res=>{
+                return {
+                    note:res.data
+                }
             })
         },
-
         methods:{
             handleUpdate(){
                 this.show=true
@@ -92,9 +101,8 @@
         //     })
         // }
     }
+    import {myaxios} from "../../plugins/axios";
     // import axios from 'axios'
-    // const myaxios = axios.create({
-    // })
 </script>
 <style scoped>
   .div1{

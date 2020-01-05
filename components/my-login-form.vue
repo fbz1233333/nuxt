@@ -8,12 +8,12 @@
     <hr style="width: 20%;margin-bottom: 15px;border: #2d8cf0 5px solid;border-radius: 10px">
     <Form :model="loginInfo" ref="loginForm" :rules="loginRules">
       <FormItem label="Name" prop="name">
-        <Input  v-model="loginInfo.name" size="large" placeholder="name">
-        <Icon type="ios-person-outline" slot="prepend"/>
+        <Input  v-model="loginInfo.name" size="large"  placeholder="name">
+        <Icon type="ios-person-outline"  slot="prepend"/>
         </Input>
       </FormItem>
       <FormItem label="Password" prop="password">
-        <Input type="password" v-model="loginInfo.password"  placeholder="password">
+        <Input type="password" v-model="loginInfo.password" size="large" placeholder="password">
         <Icon type="ios-lock-outline" size="large"   slot="prepend"></Icon>
         </Input>
       </FormItem>
@@ -36,6 +36,8 @@
         <Button icon="ios-alarm" type="error" shape="circle"></Button>
       </FormItem>
     </Form>
+    {{state}}
+    {{secure_info}}
   </Drawer>
 
 </template>
@@ -44,12 +46,13 @@ export default {
     computed:{
         show(){
             return this.$store.getters.getLoginDrawer
-            // console.log(this.$store.getters.getLoginDrawer)
-            // return true
         }
     },
     data(){
         return{
+            secure_info:{},
+            state:'',
+
 
             loginInfo:{
                 name:'',
@@ -67,7 +70,20 @@ export default {
             },
         }
     },
+    mounted(){
+      this.getLoginInfo()
+    },
     methods:{
+
+        getLoginInfo(){
+            this.secure_info={
+                'LOGIN_USER_ID':this.$cookies.get('LOGIN_USER_ID'),
+                'LOGIN_USER_NAME':this.$cookies.get('LOGIN_USER_NAME'),
+                'LOGIN_USER_TOKEN':this.$cookies.get('LOGIN_USER_TOKEN')
+            }
+            this.state=this.$cookies.get('LOGIN_STATE')
+        },
+
         handleSync(){
           this.$store.commit('setLoginDrawer',false)
         },
@@ -85,6 +101,7 @@ export default {
                                 title:'LOG IN SUCCESS',
                                 desc:'Welcome '+res.data.userInfo.name
                             })
+                            this.getLoginInfo()
                         }else if (res.data.loginResult==='NO_SUCH_USER'){
                             this.$Notice.warning({
                                     title:"FAILED",

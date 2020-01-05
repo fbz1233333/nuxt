@@ -2,7 +2,7 @@
 
     <Card class="card" @click.native="handleClick" >
 
-        <h1 class="cardt">
+        <h1 class="cardt" slot="title">
           {{item.title}}
         </h1>
         <!--          <a style="margin-left: 20px;">author</a>-->

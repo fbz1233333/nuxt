@@ -13,7 +13,7 @@
       },
       computed:{
           htmlxml(){
-              return marked(this.htmlInfo)
+              return marked(""||this.htmlInfo)
           }
       }
 

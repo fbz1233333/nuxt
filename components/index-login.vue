@@ -1,7 +1,6 @@
 <template>
   <div>
-    {{secure_info}}
-    <Button @click="handleTest">Test</Button>
+<!--    <Button @click="handleTest">Test</Button>-->
     <Button v-if="state==='ON'" type="warning" class="OpenButton" @click="handleLogOut" size="large">LogOut</Button>
     <Button v-else @click="handleOpen" type="primary" class="OpenButton" size="large">OPEN</Button>
     <my-login-form v-model="show"></my-login-form>
@@ -16,12 +15,9 @@
             }
         },
         computed:{
-            secure_info(){
-                return this.$store.getters.XXXX_INFO
-            },
-            state() {
-                return this.$store.getters.XXXX_STATE
-            }
+          state(){
+              return this.$store.getters.XXXX_STATE
+          }
         },
         methods:{
             handleTest(){
@@ -31,10 +27,18 @@
                 this.$store.commit('setLoginDrawer',true)
             },
             handleLogOut(){
-                this.$store.commit('XXXX_LOG_OUT')
-                this.$Notice.info({
-                    title:'LOG OUT SUCCESS',
-                    desc:'LOGOUT SUCCESS'
+                this.$axios.get('/app/api/v2/logout',{
+                    headers:{
+                        "LOGIN_USER_ID": this.$cookies.get('LOGIN_USER_ID'),
+                        "LOGIN_USER_TOKEN": this.$cookies.get('LOGIN_USER_TOKEN'),
+                    }
+                }).then(res=>{
+                    this.$store.commit('XXXX_LOG_OUT')
+                    this.$Notice.info({
+                        title:'LOG OUT SUCCESS',
+                        desc:'LOGOUT SUCCESS'
+                    })
+
                 })
             }
         },

@@ -12,20 +12,10 @@
 </template>
 <script>
   import myTemplate from '~/components/my-template.vue'
-  import axios from 'axios'
 
-  const myaxios =axios.create({
-  })
-  myaxios.interceptors.request.use(req=>{
-      req.headers=({
-          'LOGIN_USER_ID':'sss',
-          'LOGIN_USER_TOKEN':'SSSSSSS'
-      })
-
-      return req
-  })
   // import { mapMutations } from 'vuex'
 
+  import {myaxios} from "../../plugins/axios";
   export default {
       computed:{
         info(){

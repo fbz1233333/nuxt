@@ -1,7 +1,7 @@
 import cookie from 'js-cookie';
 import axios from "axios";
 export const state = () => ({
-  LOGIN_STATE:cookie.get('LOGIN_STATE') ||"OUT",
+  LOGIN_STATE:cookie.get('LOGIN_STATE') ||"",
   LOGIN_USER_ID:cookie.get("LOGIN_USER_ID") || "",
   LOGIN_USER_NAME:cookie.get("LOGIN_USER_NAME") || "",
   LOGIN_USER_TOKEN:cookie.get("LOGIN_USER_TOKEN") || "",
@@ -16,7 +16,7 @@ export const getters= {
 
 
   XXXX_STATE(state){
-    return cookie.get('LOGIN_STATE')
+    return state.LOGIN_STATE
   },
   XXXX_ID(state){
     return state.LOGIN_USER_ID
