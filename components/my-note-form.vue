@@ -86,15 +86,13 @@
                                     'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN')
                                 }
                             }).then(res=> {
-                            // this.$Message.loading('Uploading.....')
+
+                            this.show2=false
+                            this.$router.go(0)
                             this.$Notice.success({
                                 title: 'Success',
                                 desc: 'Add successfully'
                             })
-                            this.show2=false
-                            // this.show=false
-
-                            this.$router.go(0)
                         })
                     }else {
                         this.$Notice.warning({

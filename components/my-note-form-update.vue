@@ -32,7 +32,6 @@
 </template>
 <script>
     import myMavonEditor from '~/components/my-mavon-editor.vue'
-    import cookie from 'js-cookie'
     export default {
         components:{
             myMavonEditor
@@ -99,14 +98,15 @@
                                 }
                             }).then(res=> {
                             // this.$Message.loading('Uploading.....')
-                            this.$Notice.success({
-                                title: 'Success',
-                                desc: 'update successfully'
-                            })
+
                             this.show2=false
                             // this.show=false
 
                             this.$router.go(0)
+                            this.$Notice.success({
+                                title: 'Success',
+                                desc: 'update successfully'
+                            })
                         })
                     }else {
                         this.$Notice.warning({
@@ -125,6 +125,7 @@
             }
         }
     }
+    import cookie from 'js-cookie'
 </script>
 <style scoped>
   .title1{
