@@ -82,8 +82,8 @@
                         this.$axios.post(this.postUrl,this.noteNew,
                             {
                                 headers:{
-                                    'LOGIN_USER_ID':this.$cookies.get('LOGIN_USER_ID'),
-                                    'LOGIN_USER_TOKEN':this.$cookies.get('LOGIN_USER_TOKEN')
+                                    'loginUserId':this.$cookies.get('loginUserId'),
+                                    'loginUserToken':this.$cookies.get('loginUserToken')
                                 }
                             }).then(res=> {
 

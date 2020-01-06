@@ -5,10 +5,7 @@ export default function ({ $axios, app }) {
   // console.log(app.$cookies.get('token'))  //每次请求获取cooie
   // app.use(proxy('/app'),{target:'http://localhost:8081',changeOrigin:true})
   $axios.onRequest(config => {
-    config.headers={
-      LOGIN_USER_ID:app.$cookies.get('LOGIN_USER_ID'),
-      LOGIN_USER_TOKEN:app.$cookies.get('LOGIN_USER_TOKEN'),
-    }
+
     // 获取cookie放在头部传到后端
     // config.baseURL='http://localhost:8081'
     return config;
@@ -20,9 +17,6 @@ export default function ({ $axios, app }) {
       Notice.error({
         title:'Error',
         desc:error.response.data.infos[i],
-        render:h=>{
-          return h('div','restore')
-        }
       })
     }
 

@@ -77,11 +77,11 @@ export default {
 
         getLoginInfo(){
             this.secure_info={
-                'LOGIN_USER_ID':this.$cookies.get('LOGIN_USER_ID'),
-                'LOGIN_USER_NAME':this.$cookies.get('LOGIN_USER_NAME'),
-                'LOGIN_USER_TOKEN':this.$cookies.get('LOGIN_USER_TOKEN')
+                'loginUserId':this.$cookies.get('loginUserId'),
+                'loginUserName':this.$cookies.get('loginUserName'),
+                'loginUserToken':this.$cookies.get('loginUserToken')
             }
-            this.state=this.$cookies.get('LOGIN_STATE')
+            this.state=this.$cookies.get('loginState')
         },
 
         handleSync(){

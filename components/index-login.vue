@@ -29,8 +29,8 @@
             handleLogOut(){
                 this.$axios.get('/app/api/v2/logout',{
                     headers:{
-                        "LOGIN_USER_ID": this.$cookies.get('LOGIN_USER_ID'),
-                        "LOGIN_USER_TOKEN": this.$cookies.get('LOGIN_USER_TOKEN'),
+                        "loginUserId": this.$cookies.get('loginUserId'),
+                        "loginUserToken": this.$cookies.get('loginUserToken'),
                     }
                 }).then(res=>{
                     this.$store.commit('XXXX_LOG_OUT')
@@ -39,6 +39,23 @@
                         desc:'LOGOUT SUCCESS'
                     })
 
+                }).catch(err=>{
+                    let _this=this
+                    this.$Modal.confirm({
+                        title:'login state error',
+                        render:h => {
+                            return h('p','do you want to revert?')
+                        },
+                        okText:'yes',
+                        cancelText:'no',
+                        onOk(){
+                            _this.$store.commit('XXXX_LOG_OUT')
+                            _this.$Notice.success({
+                                title:'success',
+                                desc:'revert success'
+                            })
+                        }
+                    })
                 })
             }
         },

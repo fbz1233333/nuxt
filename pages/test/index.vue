@@ -32,7 +32,7 @@
 export default {
       data(){
           return{
-              cookieRes:this.$cookies.get('LOGIN_USER_ID'),
+              cookieRes:this.$cookies.get('loginUserId'),
               GitInfos:[
                   {
                       href:'https://github.com/fbz1233333/swagger',

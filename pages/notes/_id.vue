@@ -17,7 +17,7 @@
     </div>
     <div slot="content">
       <!--      {{note.id}}-->
-      <my-html :htmlInfo="note.text"></my-html>
+      <my-html :htmlInfo="note.text" style="margin-top: 20px"></my-html>
       <my-note-form-update v-model="show" post-url='/app/api/v4/update' :note="note"></my-note-form-update>
 
     </div>
@@ -73,8 +73,8 @@
                             id:id
                         }, {
                             headers:{
-                                'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
-                                'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN')
+                                'loginUserId':cookie.get('loginUserId'),
+                                'loginUserToken':cookie.get('loginUserToken')
                             }
                         }).then(res=>{
                             _this.$Notice.success({

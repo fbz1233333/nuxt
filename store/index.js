@@ -1,10 +1,9 @@
 import cookie from 'js-cookie';
-import axios from "axios";
 export const state = () => ({
-  LOGIN_STATE:cookie.get('LOGIN_STATE') ||"",
-  LOGIN_USER_ID:cookie.get("LOGIN_USER_ID") || "",
-  LOGIN_USER_NAME:cookie.get("LOGIN_USER_NAME") || "",
-  LOGIN_USER_TOKEN:cookie.get("LOGIN_USER_TOKEN") || "",
+  loginState:cookie.get('loginState') ||"",
+  loginUserId:cookie.get("loginUserId") || "",
+  loginUserName:cookie.get("loginUserName") || "",
+  loginUserToken:cookie.get("loginUserToken") || "",
 
   LoginDrawer:false
 
@@ -16,22 +15,22 @@ export const getters= {
 
 
   XXXX_STATE(state){
-    return state.LOGIN_STATE
+    return state.loginState
   },
   XXXX_ID(state){
-    return state.LOGIN_USER_ID
+    return state.loginUserId
   },
   XXXX_NAME(state){
-    return state.LOGIN_USER_NAME
+    return state.loginUserName
   },
   XXXX_TOKEN(state){
-    return state.LOGIN_USER_TOKEN
+    return state.loginUserToken
   },
   XXXX_INFO(state){
     return {
-      'LOGIN_USER_ID':cookie.get('LOGIN_USER_ID'),
-      'LOGIN_USER_NAME':cookie.get('LOGIN_USER_NAME'),
-      'LOGIN_USER_TOKEN':cookie.get('LOGIN_USER_TOKEN'),
+      'loginUserId':cookie.get('loginUserId'),
+      'loginUserName':cookie.get('loginUserName'),
+      'loginUserToken':cookie.get('loginUserToken'),
     }
   }
 }
@@ -43,32 +42,32 @@ export const mutations = {
 
   XXXX_LOG_IN(state,result){
     console.log('user XXXX_Store..')
-    state.LOGIN_STATE='ON'
-    state.LOGIN_USER_ID=result.userInfo.id;
-    state.LOGIN_USER_NAME=result.userInfo.name;
-    state.LOGIN_USER_TOKEN=result.token;
-    cookie.set('LOGIN_STATE','ON',{expires:1})
-    cookie.set('LOGIN_USER_ID',result.userInfo.id,{expires:1})
-    cookie.set('LOGIN_USER_NAME',result.userInfo.name,{expires:1})
-    cookie.set('LOGIN_USER_TOKEN',result.token,{expires:1})
-    axios.interceptors.request.use(config=>{
+    state.loginState='ON'
+    state.loginUserId=result.userInfo.id;
+    state.loginUserName=result.userInfo.name;
+    state.loginUserToken=result.token;
+    cookie.set('loginState','ON',{expires:1})
+    cookie.set('loginUserId',result.userInfo.id,{expires:1})
+    cookie.set('loginUserName',result.userInfo.name,{expires:1})
+    cookie.set('loginUserToken',result.token,{expires:1})
+    myaxios.interceptors.request.use(config=>{
       config.headers={
-        "LOGIN_USER_ID":cookie.get('LOGIN_USER_ID'),
-        "LOGIN_USER_TOKEN":cookie.get('LOGIN_USER_TOKEN')
+        "loginUserId":cookie.get('loginUserId'),
+        "loginUserToken":cookie.get('loginUserToken')
       }
       return config
     })
   },
   XXXX_LOG_OUT(state){
-    state.LOGIN_STATE='OUT'
-    state.LOGIN_USER_ID=""
-    state.LOGIN_USER_NAME="";
-    state.LOGIN_USER_TOKEN="";
-    cookie.set('LOGIN_STATE','')
-    cookie.remove('LOGIN_USER_ID')
-    cookie.remove('LOGIN_USER_NAME')
-    cookie.remove('LOGIN_USER_TOKEN')
-    axios.interceptors.request.use(config=>{
+    state.loginState='OUT'
+    state.loginUserId=""
+    state.loginUserName="";
+    state.loginUserToken="";
+    cookie.set('loginState','')
+    cookie.remove('loginUserId')
+    cookie.remove('loginUserName')
+    cookie.remove('loginUserToken')
+    myaxios.interceptors.request.use(config=>{
       config.headers={
       }
       return config
@@ -76,3 +75,4 @@ export const mutations = {
   }
 }
 
+import {myaxios} from '../plugins/axios'
