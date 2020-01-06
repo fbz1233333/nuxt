@@ -7,6 +7,9 @@
 <script>
   export default {
 
+      mounted(){
+          this.$store.commit('xxxSet')
+      }
   }
 </script>
 <style>

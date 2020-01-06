@@ -21,10 +21,10 @@
         <Icon type="ios-analytics" />
         About
       </MenuItem>
-    <MenuItem to="/test" name="5">
-      <Icon type="md-battery-full" />
-      MyTests
-    </MenuItem>
+<!--    <MenuItem to="/test" name="5">-->
+<!--      <Icon type="md-battery-full" />-->
+<!--      MyTests-->
+<!--    </MenuItem>-->
     <Submenu name="effects">
       <template slot="title">
         <Icon type="ios-body-outline" />
@@ -36,30 +36,22 @@
         </MenuItem>
       </MenuGroup>
     </Submenu>
-    <MenuItem class="right" name="logout" v-if="state==='ON'">
-<!--      <Icon type="md-exit" />-->
-<!--      Logout-->
+    <MenuItem name="info" v-if="state==='ON'" :to="'/info/'+secure_info.loginUserId" class="myAvatar">
+        <Avatar icon="ios-person"  size="large" src="/app/image/test.jpg"/>
+      {{secure_info.loginUserName}}
     </MenuItem>
-    <MenuItem class="right" name="login" v-else>
-<!--      <Button @click="handle1">Login</Button>-->
-    </MenuItem>
-<div class="myAvatar">
-  <Avatar icon="ios-person"  size="large" src="/app/image/test.jpg"/>
-  <a class="myA">fbz123</a>
-</div>
+
   </Menu>
   </Affix>
 </template>
 <script>
     export default {
-        methods:{
-            handle1(){
-                this.$store.commit('setLoginDrawer',true)
-            }
-        },
       computed:{
           state(){
               return this.$store.getters.XXXX_STATE
+          },
+          secure_info(){
+              return this.$store.getters.XXXX_INFO
           }
       }
 

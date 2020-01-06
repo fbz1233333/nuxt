@@ -2,30 +2,22 @@
   <div>
 <!--    <Button @click="handleTest">Test</Button>-->
     <Button v-if="state==='ON'" type="warning" class="OpenButton" @click="handleLogOut" size="large">LogOut</Button>
-    <Button v-else @click="handleOpen" type="primary" class="OpenButton" size="large">OPEN</Button>
-    <my-login-form v-model="show"></my-login-form>
+    <my-login-form v-else></my-login-form>
   </div>
 
 </template>
 <script>
     export default {
-        data(){
-            return {
-                show: false,
-            }
-        },
         computed:{
           state(){
               return this.$store.getters.XXXX_STATE
-          }
+          },
         },
         methods:{
             handleTest(){
                 this.$axios.get('/app/api/v0/test')
             },
-            handleOpen(){
-                this.$store.commit('setLoginDrawer',true)
-            },
+
             handleLogOut(){
                 this.$axios.get('/app/api/v2/logout',{
                     headers:{
@@ -67,12 +59,10 @@
 </script>
 <style scoped>
 
-
   .OpenButton{
     position: absolute;
     right: 10px;
     bottom: 450px;
   }
-
 
 </style>

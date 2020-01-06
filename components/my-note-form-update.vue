@@ -102,11 +102,12 @@
                             this.show2=false
                             // this.show=false
 
-                            this.$router.go(0)
+
                             this.$Notice.success({
                                 title: 'Success',
                                 desc: 'update successfully'
                             })
+                            location.reload()
                         })
                     }else {
                         this.$Notice.warning({

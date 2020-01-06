@@ -15,7 +15,7 @@
 
   // import { mapMutations } from 'vuex'
 
-  import {myaxios} from "../../plugins/axios";
+  // import {myaxios} from "../../plugins/axios";
   export default {
       computed:{
         info(){
@@ -33,14 +33,6 @@
         console.log(data)
         store.commit('mine/set2',data)
     },
-      asyncData({params}){
-          return myaxios.post('http://localhost:8081/api/v0/test2',{
-              id:params.id
-          }).then(res=>{
-              console.log(res.data)
-              return {result:res.data}
-          })
-      },
       // async asyncData({params}){
       //     const {data}=await myaxios.post('http://localhost:8081/api/v0/test2',{id:params.id})
       //     return {result:data}

@@ -2,7 +2,12 @@
   <my-template>
     <div slot="title">
       {{note.title}}
-      <div style="float:right;;">
+
+
+
+    </div>
+    <div slot="content" class="content">
+      <div style="float:right;;" v-if="show1">
         <Button type="error" @click="handleDelete">
           <Icon type="md-close" />
           Delete
@@ -12,23 +17,26 @@
           Update
         </Button>
       </div>
-
-
-    </div>
-    <div slot="content">
       <!--      {{note.id}}-->
-      <my-html :htmlInfo="note.text" style="margin-top: 20px"></my-html>
+      <my-html :htmlInfo="note.text" ></my-html>
       <my-note-form-update v-model="show" post-url='/app/api/v4/update' :note="note"></my-note-form-update>
 
     </div>
   </my-template>
 </template>
 <script>
-    import cookie from 'js-cookie'
+    // import cookie from 'js-cookie'
     import myTemplate from '~/components/my-template.vue'
     import myHtml from '~/components/my-html.vue'
     import myNoteFormUpdate from '~/components/my-note-form-update.vue'
     export default {
+        computed:{
+          show1(){
+              let state=this.$store.getters.XXXX_STATE;
+              let loginUserId=this.$store.getters.XXXX_ID
+              return state==='ON'
+          }
+        },
         data(){
             return{
                 show:false,
@@ -40,18 +48,11 @@
                 }
             }
         },
-        // mounted(){
-        //     this.$axios.post('/app/api/v4/getOneNote',{
-        //         id:this.$route.params.id
-        //     }).then(res=>{
-        //         this.note=res.data
-        //     })
-        // },
-        asyncData({params}){
-            return myaxios.post('http://localhost:8081/api/v4/getOneNote',{ id:params.id}).then(res=>{
-                return {
-                    note:res.data
-                }
+        mounted(){
+            this.$axios.post('/app/api/v4/getOneNote',{
+                id:this.$route.params.id
+            }).then(res=>{
+                this.note=res.data
             })
         },
         methods:{
@@ -73,8 +74,8 @@
                             id:id
                         }, {
                             headers:{
-                                'loginUserId':cookie.get('loginUserId'),
-                                'loginUserToken':cookie.get('loginUserToken')
+                                'loginUserId':_this.$cookies.get('loginUserId'),
+                                'loginUserToken':_this.$cookies.get('loginUserToken')
                             }
                         }).then(res=>{
                             _this.$Notice.success({
@@ -101,11 +102,15 @@
         //     })
         // }
     }
-    import {myaxios} from "../../plugins/axios";
+    // import {myaxios} from "../../plugins/axios";
     // import axios from 'axios'
 </script>
 <style scoped>
   .div1{
     padding-top: 10px;
+  }
+  .content{
+    margin-top: 20px;
+    padding-right: 100px
   }
 </style>

@@ -10,14 +10,17 @@
       <div class="diaryList">
 
         <h1 class="title">
-          <slot name="title">
 
-          </slot>
+            <slot name="title">
+
+            </slot>
+
+
           <hr class="hr">
 
         </h1>
 
-        <div style="margin-top: 10px;margin-bottom: 10px">
+        <div style="margin-top: 40px;margin-bottom: 10px">
           <slot name="content">
 
           </slot>
@@ -70,6 +73,7 @@
     text-align: center;
   }
   .title {
+    line-height: 200%;
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: block;
@@ -79,30 +83,6 @@
     color: #35495e;
     letter-spacing: 1px;
   }
-  .myInfo {
 
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
-  .myH1{
-    font-weight: 200;
-    font-size: 25px;
-    color: #526488;
-    height: 200%;
-  }
-  .links {
-    padding-top: 15px;
-  }
-  .aboutMenu{
-    background-color: white;
-    padding-top: 210px;
-  }
-  .aboutCard{
-    text-align: left;
-    width: 60%;
-    min-height: 1000px;
-    padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 100px;
-  }
+
 </style>

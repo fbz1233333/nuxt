@@ -88,7 +88,7 @@
             <a style="color: #2d8cf0">扈江离与辟芷兮，纫秋兰以为佩</a>
 <!--            <img src="../assets/img/top-right.jpg" height="40" width="180"-->
 <!--                 style="position: relative;float:right;right: 20px"/>-->
-            <Button @click="updating=!updating" class="myButton" icon="ios-brush-outline">
+            <Button v-if="show1" @click="updating=!updating" class="myButton" icon="ios-brush-outline">
               修改
             </Button>
           </div>
@@ -133,7 +133,10 @@
             textHtml(){
                 return marked(this.text)
             },
-
+            show1(){
+                let state=this.$store.getters.XXXX_STATE
+                return state==='ON'
+            }
         },
         components: {
             Logo,myHeader,myFooter,myRight,myHtml,myMavonEditor

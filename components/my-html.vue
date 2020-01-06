@@ -1,6 +1,5 @@
 <template>
-  <div class="markdown-body html1"
-       v-html="htmlxml"/>
+  <div class="markdown-body html1" v-html="htmlxml"/>
 </template>
 <script>
     import marked from 'marked'

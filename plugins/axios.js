@@ -24,6 +24,4 @@ export default function ({ $axios, app }) {
   });
 }
 
-import axios from 'axios'
 
-export const myaxios = axios.create({})

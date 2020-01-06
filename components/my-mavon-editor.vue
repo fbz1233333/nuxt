@@ -63,8 +63,8 @@
                     fileType:'IMAGE'
                 },{
                     headers:{
-                        "loginUserId":cookie.get('loginUserId'),
-                        "loginUserToken":cookie.get('loginUserToken'),
+                        "loginUserId":this.$cookies.get('loginUserId'),
+                        "loginUserToken":this.$cookies.get('loginUserToken'),
                     }
                 }).then(res=>{
                     this.$Message.success('delete success')

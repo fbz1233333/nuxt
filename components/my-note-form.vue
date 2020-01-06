@@ -32,7 +32,7 @@
 </template>
 <script>
     import myMavonEditor from '~/components/my-mavon-editor.vue'
-    import cookie from 'js-cookie'
+    // import cookie from 'js-cookie'
     export default {
         components:{
             myMavonEditor
@@ -87,12 +87,14 @@
                                 }
                             }).then(res=> {
 
+
                             this.show2=false
-                            this.$router.go(0)
+                            this.$emit('input',false)
                             this.$Notice.success({
                                 title: 'Success',
                                 desc: 'Add successfully'
                             })
+                            location.reload()
                         })
                     }else {
                         this.$Notice.warning({
