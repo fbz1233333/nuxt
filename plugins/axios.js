@@ -12,12 +12,19 @@ export default function ({ $axios, app }) {
   });
 
   $axios.onError(error => {
-    console.log('error in ...',error.response.data.infos)
-    for (let i=0;i<error.response.data.infos.length;i++){
-      Notice.error({
-        title:'Error',
-        desc:error.response.data.infos[i],
-      })
+    let errObject=error.response.data
+    let code=errObject.code
+    let infos=errObject.infos
+    // console.log(code)
+    // console.log('error in ...',errorObject.infos)
+
+    if (code===89){
+
+    }else if (code===88){
+        Notice.error({
+          title:'error',
+          desc:infos
+        })
     }
 
 

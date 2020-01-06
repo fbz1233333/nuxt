@@ -1,9 +1,9 @@
 import cookie from 'js-cookie';
 export const state = () => ({
-  loginState:cookie.get('loginState'),
-  loginUserId:cookie.get("loginUserId"),
-  loginUserName:cookie.get("loginUserName"),
-  loginUserToken:cookie.get("loginUserToken"),
+  loginState:'',
+  loginUserId:'',
+  loginUserName:'',
+  loginUserToken:'',
 })
 export const getters= {
   XXXX_STATE(state){

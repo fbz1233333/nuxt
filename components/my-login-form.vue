@@ -65,7 +65,7 @@ export default {
             loginRules:{
                 name:[
                     {required:true,message:'name is needed',trigger:'blur'},
-                    {type:'string',min:3,max:5,message: 'name length 3-5',trigger:'blur'}
+                    {type:'string',min:3,max:6,message: 'name length 3-5',trigger:'blur'}
                 ],
                 password: [
                     {required:true,message:'password is needed',trigger:'blur'},
@@ -129,7 +129,8 @@ export default {
   .OpenButton{
     position: absolute;
     right: 10px;
-    bottom: 450px;
+    top: 50%;
+
   }
 
 </style>
