@@ -94,7 +94,8 @@
                             {
                                 headers:{
                                     'loginUserId':this.$cookies.get('loginUserId'),
-                                    'loginUserToken':this.$cookies.get('loginUserToken')
+                                    'loginUserToken':this.$cookies.get('loginUserToken'),
+                                    'updateNoteId':this.noteNew.id
                                 }
                             }).then(res=> {
                             // this.$Message.loading('Uploading.....')

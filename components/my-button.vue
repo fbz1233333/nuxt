@@ -15,15 +15,16 @@ export default {
 </script>
 <style scoped>
   .my-btn{
+
     background: #2d8cf0;
     border: #2d8cf0 0 solid;
     border-radius: 100%;
-    padding: 30px;
+    padding: 3%;
     outline: none;
     float: right;
-    margin-right: 10px;
-    margin-top: 20px;
-  }
+    margin-right: 5%;
+    margin-top: 2%;
+  }0
   .my-btn:hover{
     background: #5cadff;
   }

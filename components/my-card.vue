@@ -43,6 +43,9 @@ export default {
   .card{
     margin-top: 20px;
     min-height: 20px;
+    margin-left: 10px;
+    margin-right: 40px;
+    padding-left: 10px;
     padding-bottom: 5px;
   }
   .cardt{

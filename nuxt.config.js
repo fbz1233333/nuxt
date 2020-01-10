@@ -23,7 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
-    'iview/dist/styles/iview.css',
+    'view-design/dist/styles/iview.css',
     { src: "mavon-editor/dist/css/index.css" },
   ],
   /*

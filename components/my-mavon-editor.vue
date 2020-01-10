@@ -49,7 +49,9 @@
                 }).then(res => {
                     // console.log(res.data)
                     let base = "/app/image/"
-                    let url = base + res.data.fileName
+                    let userId=this.$store.getters.XXXX_ID
+                    let noteImagePath='noteImage/'
+                    let url = base+userId+'/' +noteImagePath+ res.data.fileName
                     // console.log(url)
                     this.$refs.md.$img2Url(pos, url);
                 })

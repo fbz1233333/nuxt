@@ -15,10 +15,10 @@
       </div>
       <Form ref="form1" :model="noteNew" :rules="rules1" :label-width="100">
         <FormItem prop="title" label="title">
-          <Input type="text" v-model="noteNew.title" style="width: 200px" size="large"/>
+          <Input type="text" v-model="noteNew.title" style="width: 200px" size="large" placeholder="please set the title"/>
         </FormItem>
         <FormItem prop="description" label="description">
-          <Input  v-model="noteNew.description" type="textarea" :rows="5"/>
+          <Input  v-model="noteNew.description" type="textarea" :rows="5" placeholder="please set the description"/>
 
         </FormItem>
       </Form>
@@ -54,7 +54,7 @@
                 noteNew:{
                     title:'',
                     text:'',
-                    description:''
+                    description:'',
                 },
                 rules1:{
                     title:[
@@ -121,7 +121,8 @@
   }
 
   .title2{
-    font-size: 20px;
+    margin-left: 10%;
+    font-size: 15px;
     font-weight: 100;
   }
 </style>

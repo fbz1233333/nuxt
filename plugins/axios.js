@@ -1,5 +1,5 @@
 
-import {Notice} from "iview";
+import {Notice} from "view-design";
 export default function ({ $axios, app }) {
   // $axios.baseUrl="http://localhost:8081"
   // console.log(app.$cookies.get('token'))  //每次请求获取cooie
@@ -13,19 +13,26 @@ export default function ({ $axios, app }) {
 
   $axios.onError(error => {
     let errObject=error.response.data
+    // console.log(errObject)
     let code=errObject.code
     let infos=errObject.infos
     // console.log(code)
-    // console.log('error in ...',errorObject.infos)
+    // console.log('error in ...',infos)
+    //
+    // if (code===89){
+    //   Notice.error({
+    //     title:'error',
+    //     desc:infos
+    //   })
+    // }else if (code===88){
+    //
+    //
+    // }
 
-    if (code===89){
-
-    }else if (code===88){
-        Notice.error({
-          title:'error',
-          desc:infos
-        })
-    }
+    Notice.error({
+      title:'error',
+      desc:infos
+    })
 
 
   });

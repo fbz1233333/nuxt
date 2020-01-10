@@ -56,30 +56,30 @@
     width: 20%;
   }
   .diaryList{
-    margin-top: -40px;
     text-align: left;
-    padding: 20px 40px 40px 20px;
+    padding: 0 40px 40px 40px;
     background-color: white;
     min-height: 1000px;
     width: 60%;
   }
   .container {
 
+
     background-color: #F5F5F5;
     min-height: 700px;
     display: flex;
     /*justify-content: center;*/
     /*align-items: center;*/
-    text-align: center;
+    /*text-align: center;*/
   }
   .title {
-    line-height: 200%;
+    /*line-height: 200%;*/
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: block;
     font-weight: 300;
-    margin-top: 20px;
     font-size: 70px;
+    margin-left: 15px;
     color: #35495e;
     letter-spacing: 1px;
   }

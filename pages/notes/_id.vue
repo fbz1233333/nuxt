@@ -8,6 +8,8 @@
     </div>
     <div slot="content" class="content">
       <div style="float:right;;" v-if="show1">
+<!--        {{note.createBy}}-->
+
         <Button type="error" @click="handleDelete">
           <Icon type="md-close" />
           Delete
@@ -34,7 +36,8 @@
           show1(){
               let state=this.$store.getters.XXXX_STATE;
               let loginUserId=this.$store.getters.XXXX_ID
-              return state==='ON'
+              let createBy=this.note.createBy
+              return state==='ON'&& createBy===loginUserId
           }
         },
         data(){
@@ -44,15 +47,24 @@
                     id:'',
                     title:'',
                     description:'',
-                    text:''
+                    text:'',
+                    createBy:''
                 }
             }
         },
-        mounted(){
-            this.$axios.post('/app/api/v4/getOneNote',{
-                id:this.$route.params.id
+        // mounted(){
+        //     this.$axios.post('/app/api/v4/getOneNote',{
+        //         id:this.$route.params.id
+        //     }).then(res=>{
+        //         this.note=res.data
+        //     })
+        // },
+        asyncData({params}){
+            // console.log('in net',params.id)
+            return axios.post('http://localhost:8081/api/v4/getOneNote',{
+                id:params.id
             }).then(res=>{
-                this.note=res.data
+                return{note:res.data}
             })
         },
         methods:{
@@ -75,7 +87,8 @@
                         }, {
                             headers:{
                                 'loginUserId':_this.$cookies.get('loginUserId'),
-                                'loginUserToken':_this.$cookies.get('loginUserToken')
+                                'loginUserToken':_this.$cookies.get('loginUserToken'),
+                                'updateNoteId':id
                             }
                         }).then(res=>{
                             _this.$Notice.success({
@@ -93,17 +106,10 @@
         components:{
             myTemplate,myHtml,myNoteFormUpdate
         },
-        // asyncData({params}){
-        //     console.log('in net',params.id)
-        //     return myaxios.post('http://localhost:8081/api/v4/getOneNote',{
-        //         id:params.id
-        //     }).then(res=>{
-        //         return{note:res.data}
-        //     })
-        // }
+
     }
     // import {myaxios} from "../../plugins/axios";
-    // import axios from 'axios'
+    import axios from 'axios'
 </script>
 <style scoped>
   .div1{

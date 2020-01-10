@@ -1,5 +1,5 @@
 <template>
-  <Affix  :offset-bottom="0" class="footer">
+  <Affix  :offset-bottom="0" >
     <Menu mode="horizontal" theme="dark">
       <h1 class="info">
         719577252@qq.com
@@ -16,7 +16,7 @@
 </script>
 <style scoped>
   .footer{
-
+    width: 100%;
     /*align-items: center;*/
   }
   .info{

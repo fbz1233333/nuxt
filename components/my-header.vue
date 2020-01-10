@@ -55,6 +55,13 @@
           }
       }
 
+        //这种状态是不会被跟踪的
+        // data(){
+        //     return{
+        //         state:this.$store.getters.XXXX_STATE,
+        //         secure_info:this.$store.getters.XXXX_INFO
+        //     }
+        // }
 }
 </script>
 <style scoped>
@@ -66,7 +73,7 @@
     display: inline-block;
     position: relative;
     float: right;
-    right: 300px;
+    right: 20%;
     /*margin-right: 200px;*/
   }
   .header{
@@ -74,6 +81,6 @@
   }
   .right{
     float: right;
-    margin-right: 220px;
+    margin-right: 20%;
   }
 </style>

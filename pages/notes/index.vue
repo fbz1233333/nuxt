@@ -29,7 +29,7 @@
         },
         data(){
             return{
-                notes:[],
+                // notes:[],
                 show:false
             }
         },
@@ -39,18 +39,19 @@
             }
 
         },
-        mounted(){
-            this.$axios.get('/app/api/v4/getNotes_limit').then(res=>{
-                this.notes=res.data
-            })
-        },
-        // asyncData({params}) {
-        //     return myaxios.get('http://localhost:8081/api/v4/getNotes_limit').then(res=>{
-        //         return{notes:res.data}
+        // mounted(){
+        //     this.$axios.get('/app/api/v4/getNotes_limit').then(res=>{
+        //         this.notes=res.data
         //     })
-        // }
+        // },
+        asyncData({params}) {
+            return axios.get('http://localhost:8081/api/v4/getNotes_limit').then(res=>{
+                return{notes:res.data}
+            })
+        }
 
     }
+    import axios from 'axios'
     // import {myaxios} from "../../plugins/axios";
 
 </script>

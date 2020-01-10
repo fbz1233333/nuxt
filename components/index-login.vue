@@ -59,10 +59,10 @@
 </script>
 <style scoped>
 
-  .OpenButton{
+  .OpenButton {
     position: absolute;
+    top: 50%;
     right: 10px;
-    bottom: 450px;
   }
 
 </style>
