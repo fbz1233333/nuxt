@@ -54,6 +54,7 @@ export default {
   .cardp{
     font-size: 15px;
     font-weight: 100;
+    min-height: 60px;
   }
   .cardD{
     text-align: right;font-weight: 100;font-size: 15px

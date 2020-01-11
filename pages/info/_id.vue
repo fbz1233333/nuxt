@@ -12,6 +12,18 @@
     <div slot="content">
 <!--      {{userInfo.name}}-->
 <!--      {{userInfo.id}}-->
+      <div style="padding:0px 40px 40px 20px">
+        <h1>Info of you</h1>
+        <hr style="width: 10%;">
+
+
+        <h1>Notes</h1>
+        <hr style="width: 10%;">
+
+        <h2>you released</h2>
+        <h2>your attention</h2>
+      </div>
+
     </div>
   </my-template>
 </template>
@@ -42,4 +54,7 @@
     }
 </script>
 <style scoped>
+  .h11{
+    font-size: 20px;margin-left: 2%;opacity: 50%
+  }
 </style>

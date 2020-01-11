@@ -52,21 +52,21 @@
                 }
             }
         },
-        // mounted(){
-        //     this.$axios.post('/app/api/v4/getOneNote',{
-        //         id:this.$route.params.id
-        //     }).then(res=>{
-        //         this.note=res.data
-        //     })
-        // },
-        asyncData({params}){
-            // console.log('in net',params.id)
-            return axios.post('http://localhost:8081/api/v4/getOneNote',{
-                id:params.id
+        mounted(){
+            this.$axios.post('/app/api/v4/getOneNote',{
+                id:this.$route.params.id
             }).then(res=>{
-                return{note:res.data}
+                this.note=res.data
             })
         },
+        // asyncData({params}){
+        //     // console.log('in net',params.id)
+        //     return axios.post('http://localhost:8081/api/v4/getOneNote',{
+        //         id:params.id
+        //     }).then(res=>{
+        //         return{note:res.data}
+        //     })
+        // },
         methods:{
             handleUpdate(){
                 this.show=true

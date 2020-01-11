@@ -4,7 +4,7 @@
     <Button @click="handleOpen" type="primary" class="OpenButton" size="large">Open</Button>
     <Drawer class="testCard"
             v-model="show"
-            width="660"
+            width="30%"
             :closable="false">
       <h1 class="formTitle">Log In</h1>
       <hr style="width: 20%;margin-bottom: 15px;border: #2d8cf0 5px solid;border-radius: 10px">
@@ -116,6 +116,7 @@ export default {
 }
 </script>
 <style scoped>
+
   .ivu-form-item >:first-child{
     font-size: 18px;
   }

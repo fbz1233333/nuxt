@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <Layout>
     <my-header></my-header>
     <div class="container">
 
@@ -27,15 +27,17 @@
         </div>
 
       </div>
-      <my-right></my-right>
+        <my-right></my-right>
 
     </div>
 
-    <my-footer>
 
-    </my-footer>
+      <my-footer>
 
-  </div>
+      </my-footer>
+
+
+  </Layout>
 </template>
 
 <script>

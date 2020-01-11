@@ -25,17 +25,17 @@
 <!--      <Icon type="md-battery-full" />-->
 <!--      MyTests-->
 <!--    </MenuItem>-->
-    <Submenu name="effects">
-      <template slot="title">
-        <Icon type="ios-body-outline" />
-        Special Effects
-      </template>
-      <MenuGroup title="effects">
-        <MenuItem name="e-1" to="/effects/first">
-          first
-        </MenuItem>
-      </MenuGroup>
-    </Submenu>
+<!--    <Submenu name="effects">-->
+<!--      <template slot="title">-->
+<!--        <Icon type="ios-body-outline" />-->
+<!--        Special Effects-->
+<!--      </template>-->
+<!--      <MenuGroup title="effects">-->
+<!--        <MenuItem name="e-1" to="/effects/first">-->
+<!--          first-->
+<!--        </MenuItem>-->
+<!--      </MenuGroup>-->
+<!--    </Submenu>-->
     <MenuItem name="info" v-if="state==='ON'" :to="'/info/'+secure_info.loginUserId" class="myAvatar">
         <Avatar icon="ios-person"  size="large" src="/app/image/test.jpg"/>
       {{secure_info.loginUserName}}
