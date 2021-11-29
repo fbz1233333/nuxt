@@ -18,7 +18,7 @@
     "view-design": "^4.0.2",
     "js-cookie": "^2.2.1",
     "marked": "^0.8.0",
-    "mavon-editor": "^2.7.7",
+    "mavon-editor": "^2.8.2",
     "nuxt": "^2.0.0",
     "qs": "latest",
     "vuex": "latest"
